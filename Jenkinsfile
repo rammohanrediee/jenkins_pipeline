@@ -4,23 +4,15 @@ pipeline {
     stages {
         stage('Clone') {
             steps {
-                echo 'Cloning the repository...'
-                checkout scm
+                git 'https://github.com/rammohanrediee/jenkins_pipeline.git'
             }
         }
-        stage('Build') {
-            steps {
-                echo 'Building the application...'
-            }
-        }
-        stage('Test') {
-            steps {
-                echo 'Running tests...'
-            }
-        }
+
         stage('Deploy') {
             steps {
-                echo 'Deploying the application...'
+                echo 'Deploying index.html...'
+                sh 'mkdir -p /tmp/website'
+                sh 'cp index.html /tmp/website/'
             }
         }
     }
